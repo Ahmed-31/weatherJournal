@@ -54,10 +54,10 @@ const getDataFromLocal = async(url = '') => {
     }
 }
 
-getDataFromLocal('http://127.0.0.1:8080/all').then((data) => {
-    dataGet = data;
-    console.log('nowas ', dataGet);
-});
+// getDataFromLocal('http://127.0.0.1:8080/all').then((data) => {
+//     dataGet = data;
+//     console.log('nowas ', dataGet);
+// });
 
 
 // event listener to fire inline function called onClick
@@ -80,6 +80,11 @@ function onClick() {
             postDataToLocal('http://127.0.0.1:8080/add', dataToPost);
             console.log(dataToPost);
             console.log('datato post ', dataToPost);
+        }).then(async() => {
+            //get the data first then update the DOM
+            dataGet = await getDataFromLocal('http://127.0.0.1:8080/all');
+            //now we need to update the DOM
+            DOM_update(dataGet);
         });
     } else {
         alert('Can\'t get data without zip code!!\nPlease enter zip');
@@ -121,6 +126,9 @@ async function weatherData(zipValue) {
 
 }
 
+function DOM_update(dataGet) {
+    console.log('dataget', dataGet);
+}
 // const x = async() => {
 //     console.log('serf');
 //     dataGet = await getDataFromLocal('http://127.0.0.1:8080/all');
