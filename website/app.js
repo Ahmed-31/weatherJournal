@@ -1,8 +1,10 @@
-//commit of adding the get function with little test on the connection between app.js and server.js
-//and it worked :)
+// Create a new date instance dynamically with JS
+//to be used later in updating the DOM
+let date = new Date();
+let usableDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
 
 //the object data to be posted to local server
-let dataToPost = { name: 'this is just test', age: 12 };
+let dataToPost = {};
 
 //the object to recive the data we get
 let dataGet = {};
@@ -70,6 +72,14 @@ function onClick() {
         weatherData(zipValue).then((weatherdata) => {
             //log the respons data 
             console.log('weatherdata', weatherdata);
+            dataToPost = weatherdata;
+            //adding both date & feelings in the data to post object before posting to local 
+            dataToPost.date = usableDate;
+            dataToPost['howFeel'] = document.getElementById('feelings').value;
+            //now post to local 
+            postDataToLocal('http://127.0.0.1:8080/add', dataToPost);
+            console.log(dataToPost);
+            console.log('datato post ', dataToPost);
         });
     } else {
         alert('Can\'t get data without zip code!!\nPlease enter zip');
