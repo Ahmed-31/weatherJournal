@@ -44,10 +44,8 @@ const getDataFromLocal = async(url = '') => {
     });
     try {
         const data = await response.json();
-        console.log('here');
         //to see the data that we got from local server in the console
         console.log('data from local', data);
-        dataGet = data;
         return data;
     } catch (error) {
         console.log("error", error);
@@ -58,6 +56,15 @@ getDataFromLocal('http://127.0.0.1:8080/all').then((data) => {
     dataGet = data;
     console.log('nowas ', dataGet);
 });
+
+
+// event listener to fire inline function called onClick
+document.querySelector('#generate').addEventListener('click', onClick);
+
+function onClick() {
+    console.log('click generate');
+}
+
 // const x = async() => {
 //     console.log('serf');
 //     dataGet = await getDataFromLocal('http://127.0.0.1:8080/all');
