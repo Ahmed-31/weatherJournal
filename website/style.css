@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.holder {
+    margin: 10pt;
+    display: flex;
+    font-size: 18pt;
+}
+
+.headline {
+    background-color: antiquewhite;
+    font-size: 35pt;
+    padding: 10pt;
+}
+
+.zip {
+    flex-flow: column wrap;
+    font-size: 16pt;
+    width: 45%;
+}
+
+#zip {
+    margin-top: 5pt;
+    margin-left: 3pt;
+    width: 10em;
+    font-size: 12pt;
+    border-radius: 10px;
+}
+
+.feel {
+    flex-flow: column wrap;
+    width: 45%;
+}
+
+#feelings {
+    resize: none;
+    width: 70%;
+    height: 8em;
+    font-size: 12pt;
+    margin-top: 10pt;
+    margin-left: 3pt;
+    margin-bottom: 10pt;
+    border-radius: 10px;
+}
+
+#generate {
+    cursor: pointer;
+    color: white;
+    background-color: black;
+    font-size: 12pt;
+    width: 71%;
+    height: 20pt;
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    font-size: 25px;
+}
+
+input {
+    color: rgb(0, 0, 0);
+    font-family: 'Oswald', sans-serif;
+}
+
+button {
+    font-family: 'Oswald', sans-serif;
+    box-shadow: 2px 4px 5px #444;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+textarea {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    font-family: 'Oswald', sans-serif;
+}
+
+
+/* Reset style for HTML element on active to have no border*/
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+
+/* Style for Placeholder Text*/
+
+::placeholder {
+    /* Firefox, Chrome, Opera */
+    color: #000000;
+    font-family: 'Oswald', sans-serif;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #000000;
+    font-family: 'Oswald', sans-serif;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #000000;
+    font-family: 'Oswald', sans-serif;
+}
