@@ -6,6 +6,12 @@ body {
     background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/07/Download-Free-Weather-Background.jpg);
 }
 
+#split {
+    display: grid;
+    grid-template-columns: 40% 25% 25%;
+    grid-template-rows: 20% 80%;
+}
+
 #app {
     height: 100vh;
 }
@@ -23,9 +29,11 @@ body {
 }
 
 .zip {
+    grid-column: 1/2;
+    grid-row: 1/-1;
     flex-flow: column wrap;
     font-size: 16pt;
-    width: 45%;
+    width: 100%;
 }
 
 #zip {
@@ -37,8 +45,10 @@ body {
 }
 
 .feel {
+    grid-column: 1/2;
+    grid-row: 2/-1;
     flex-flow: column wrap;
-    width: 45%;
+    width: 100%;
 }
 
 #feelings {
@@ -63,8 +73,10 @@ body {
 }
 
 #entry {
+    grid-column: 2 / -1;
+    grid-row: 1;
     background-color: rgba(250, 235, 215, 0.2);
-    width: 70%;
+    width: 100%;
     margin: 40px 30px;
     border-radius: 10px;
     height: 270px;
