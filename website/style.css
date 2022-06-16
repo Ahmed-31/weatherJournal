@@ -1,6 +1,13 @@
 body {
     margin: 0;
     padding: 0;
+    background-position: center center;
+    background-size: cover;
+    background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/07/Download-Free-Weather-Background.jpg);
+}
+
+#app {
+    height: 100vh;
 }
 
 .holder {
@@ -10,7 +17,7 @@ body {
 }
 
 .headline {
-    background-color: antiquewhite;
+    background-color: rgba(250, 235, 215, 0.2);
     font-size: 35pt;
     padding: 10pt;
 }
@@ -55,12 +62,53 @@ body {
     border-radius: 10px;
 }
 
+#entry {
+    background-color: rgba(250, 235, 215, 0.2);
+    width: 70%;
+    margin: 40px 30px;
+    border-radius: 10px;
+    height: 270px;
+    flex-flow: row wrap;
+}
+
+#entryHolder {
+    align-items: center;
+    justify-items: center;
+    background-color: rgba(120, 120, 146, 0.24);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 40% 15%;
+    grid-template-columns: 50% 50%;
+    font-size: 1.5vw;
+}
+
+#temp,
+#city {
+    font-size: 4vw;
+}
+
+#date {
+    grid-column: 1 / 3;
+    font-size: 18px;
+}
+
+#content {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    font-size: 20px;
+}
+
 label {
+    background-color: rgba(250, 235, 215, 0.2);
+    width: 71%;
     display: block;
     font-size: 25px;
+    border-radius: 10px;
 }
 
 input {
+    background-color: rgba(255, 255, 255, 0.55);
     color: rgb(0, 0, 0);
     font-family: 'Oswald', sans-serif;
 }
@@ -75,6 +123,7 @@ h1 {
 }
 
 textarea {
+    background-color: rgba(255, 255, 255, 0.55);
     font-size: 20px;
     color: rgb(0, 0, 0);
     font-family: 'Oswald', sans-serif;
