@@ -1,8 +1,3 @@
-// Create a new date instance dynamically with JS
-//to be used later in updating the DOM
-let date = new Date();
-let usableDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-
 //the object data to be posted to local server
 let dataToPost = {};
 
@@ -67,6 +62,10 @@ function onClick() {
     // check if the zip text empty or not I as a pro programmer did this for a good reason
     //which is to separate errors invalid zip and not even enter zip :)
     if (document.querySelector('#zip').value) {
+        // Create a new date instance dynamically with JS
+        //to be used later in updating the DOM
+        let date = new Date();
+        let usableDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
         const zipValue = document.querySelector('#zip').value;
         // call the function to get web api data
         weatherData(zipValue).then((weatherdata) => {
@@ -87,7 +86,7 @@ function onClick() {
             DOM_update(dataGet);
         });
     } else {
-        alert('Can\'t get data without zip code!!\nPlease enter zip');
+        alert('Can\'t get data without zip code!!\nPlease enter zip\ntry 10001 or 30044 or 30303 or 11233');
     }
 
 
@@ -119,16 +118,19 @@ async function weatherData(zipValue) {
         }
     } catch (error) {
         console.log('error', error); //print error for me 'ahmed adel' in the console
-        alert(error); //prompt a message to the user to inform him he is idiot not entering zip code
+        alert(error + '\ntry 10001 or 30044 or 30303 or 11233'); //prompt a message to the user to inform him he is idiot not entering zip code
         return reject(error);
     }
 
 
 }
 
+//function to update the UI and the DOM with the new data
+//finally it's the last function in the project ;)
 function DOM_update(dataGet) {
     console.log('dataget', dataGet);
 
+    //updating each div element in the DOM
     document.querySelector('#city').innerHTML = dataGet.cityName; // the new city
     document.querySelector('#temp').innerHTML = dataGet.temprature + '&degC'; // the new temprature
     document.querySelector('#content').innerHTML = dataGet.howFeel; // the new feeling content
