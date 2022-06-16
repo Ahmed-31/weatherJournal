@@ -1,4 +1,4 @@
-//the object data to be posted to local server
+//the object to be posted to local server
 let dataToPost = {};
 
 //the object to recive the data we get
@@ -23,12 +23,7 @@ const postDataToLocal = async(url = '', data = {}) => {
     } catch (error) {
         console.log("error", error);
     }
-
 }
-
-
-
-// postDataToLocal('http://127.0.0.1:8080/add', dataToPost);
 
 /* Function to get data from local */
 const getDataFromLocal = async(url = '') => {
@@ -49,12 +44,6 @@ const getDataFromLocal = async(url = '') => {
     }
 }
 
-// getDataFromLocal('http://127.0.0.1:8080/all').then((data) => {
-//     dataGet = data;
-//     console.log('nowas ', dataGet);
-// });
-
-
 // event listener to fire inline function called onClick
 document.querySelector('#generate').addEventListener('click', onClick);
 
@@ -68,17 +57,15 @@ function onClick() {
         let usableDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
         const zipValue = document.querySelector('#zip').value;
         // call the function to get web api data
+        //then post data to local then get the data from local then update UI from the local
+        //if all resolve true and no error or reject
         weatherData(zipValue).then((weatherdata) => {
-            //log the respons data 
-            console.log('weatherdata', weatherdata);
             dataToPost = weatherdata;
             //adding both date & feelings in the data to post object before posting to local 
             dataToPost.date = usableDate;
             dataToPost['howFeel'] = document.getElementById('feelings').value;
             //now post to local 
             postDataToLocal('http://127.0.0.1:8080/add', dataToPost);
-            console.log(dataToPost);
-            console.log('datato post ', dataToPost);
         }).then(async() => {
             //get the data first then update the DOM
             dataGet = await getDataFromLocal('http://127.0.0.1:8080/all');
@@ -88,8 +75,6 @@ function onClick() {
     } else {
         alert('Can\'t get data without zip code!!\nPlease enter zip\ntry 10001 or 30044 or 30303 or 11233');
     }
-
-
 }
 
 // Personal API Key for OpenWeatherMap API
@@ -121,25 +106,16 @@ async function weatherData(zipValue) {
         alert(error + '\ntry 10001 or 30044 or 30303 or 11233'); //prompt a message to the user to inform him he is idiot not entering zip code
         return reject(error);
     }
-
-
 }
 
 //function to update the UI and the DOM with the new data
 //finally it's the last function in the project ;)
 function DOM_update(dataGet) {
-    console.log('dataget', dataGet);
-
     //updating each div element in the DOM
     document.querySelector('#city').innerHTML = dataGet.cityName; // the new city
     document.querySelector('#temp').innerHTML = dataGet.temprature + '&degC'; // the new temprature
     document.querySelector('#content').innerHTML = dataGet.howFeel; // the new feeling content
     document.querySelector('#date').innerHTML = dataGet.date; // the new date
+
+    console.log('DOM updated successfuly :)');
 }
-// const x = async() => {
-//     console.log('serf');
-//     dataGet = await getDataFromLocal('http://127.0.0.1:8080/all');
-//     console.log('now', dataGet);
-// }
-// x();
-// console.log('now', dataGet);
