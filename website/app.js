@@ -89,9 +89,7 @@ async function weatherData(zipValue) {
     try {
         const responseData = await response.json();
         //if any error in the respond from api then print it and throw error
-        if (responseData.cod !== 200) {
-            throw new Error(responseData.message);
-        } else {
+        if (responseData.cod === 200) {
             //get the data from the promise response then return it as an object
             const temprature = responseData.main.temp;
             const cityName = responseData.name;
@@ -100,6 +98,8 @@ async function weatherData(zipValue) {
                 temprature
             }
             return weatherData;
+        } else {
+            throw new Error(responseData.message);
         }
     } catch (error) {
         console.log('error', error); //print error for me 'ahmed adel' in the console
