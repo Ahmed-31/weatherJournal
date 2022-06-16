@@ -44,8 +44,14 @@ const getDataFromLocal = async(url = '') => {
     }
 }
 
-// event listener to fire inline function called onClick
+// event listener to fire inline function called onClick when clicking on the button
 document.querySelector('#generate').addEventListener('click', onClick);
+// event listener to fire inline function called onClick when pressing enter key
+document.addEventListener('keyup', (keyCode) => {
+    if (keyCode.keyCode === 13) {
+        onClick();
+    }
+})
 
 function onClick() {
     // check if the zip text empty or not I as a pro programmer did this for a good reason
