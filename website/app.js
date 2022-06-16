@@ -128,6 +128,11 @@ async function weatherData(zipValue) {
 
 function DOM_update(dataGet) {
     console.log('dataget', dataGet);
+
+    document.querySelector('#city').innerHTML = dataGet.cityName; // the new city
+    document.querySelector('#temp').innerHTML = dataGet.temprature + '&degC'; // the new temprature
+    document.querySelector('#content').innerHTML = dataGet.howFeel; // the new feeling content
+    document.querySelector('#date').innerHTML = dataGet.date; // the new date
 }
 // const x = async() => {
 //     console.log('serf');
